@@ -65,18 +65,7 @@ class _NewCollectionSheetState extends ConsumerState<NewCollectionSheet> {
     final name = _nameController.text.trim();
     if (name.isEmpty) return;
 
-    // Free-tier collection limit
-    if (!_isEditing) {
-      final isPremium = ref.read(premProvider);
-      final count = ref.read(collectionsProvider).collections.length;
-      if (!isPremium && count >= freeMaxCollections) {
-        showPremiumGate(
-          context,
-          'You can create up to $freeMaxCollections collections on the free plan.',
-        );
-        return;
-      }
-    }
+ 
 
     if (_isEditing) {
       ref.read(collectionsProvider.notifier).updateCollection(

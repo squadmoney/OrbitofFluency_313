@@ -138,15 +138,7 @@ class _NewCardScreenState extends ConsumerState<NewCardScreen> {
     final notifier = ref.read(collectionsProvider.notifier);
     final collection = _selectedCollection ?? notifier.getOrCreateUnsorted();
 
-    // Free-tier card limit
-    final isPremium = ref.read(premProvider);
-    if (!isPremium && collection.cards.length >= freeMaxCardsPerCollection) {
-      showPremiumGate(
-        context,
-        'You can add up to $freeMaxCardsPerCollection cards per collection on the free plan.',
-      );
-      return;
-    }
+
 
     final card = FlashCard(
       id: 'card_${DateTime.now().millisecondsSinceEpoch}',

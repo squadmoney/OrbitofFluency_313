@@ -239,15 +239,6 @@ class ExportService {
 // ---------------------------------------------------------------------------
 
 Future<void> handleExportProgress(BuildContext context, WidgetRef ref) async {
-  final isPremium = ref.read(premProvider);
-
-  if (!isPremium) {
-    showPremiumGate(
-      context,
-      'Export progress is a Premium feature.',
-    );
-    return;
-  }
 
   // Show format picker
   final format = await showCupertinoModalPopup<ExportFormat>(
